@@ -1,1 +1,15 @@
-<p>planets-list works!</p>
+<div class="container" *ngIf="planets">
+  <div class="row">
+    <div class="col-8 mx-auto" *ngFor="let planet of planets.results">
+      {{planet.name}}
+    </div>
+  </div>
+  <div class="row">
+    <mat-paginator
+    [pageSize]="pageSize"
+    [length]="planets.count"
+    (page)="onPageChange($event)">
+
+    </mat-paginator>
+  </div>
+</div>

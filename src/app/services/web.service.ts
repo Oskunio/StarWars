@@ -10,4 +10,7 @@ export class WebService {
   getListOfPlanets() {
     return this.http.get(`${this.url}/planets`);
   }
+  makeGetRequest(givenURL) {
+    return this.http.get(givenURL);
+  }
 }
