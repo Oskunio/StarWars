@@ -8,7 +8,7 @@ const routes: Routes = [
     path:'listOfPlanets', component: PlanetsListComponent
   },
   {
-    path:'planet', component: PlanetDetailsComponent
+    path:'planet/:numer', component: PlanetDetailsComponent
   },
   {
     path: '',
