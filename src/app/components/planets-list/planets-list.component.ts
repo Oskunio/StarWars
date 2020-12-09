@@ -2,6 +2,7 @@ import { PlanetsService } from './../../services/planets.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Component, OnInit } from '@angular/core';
 import { Planets } from 'src/app/models/planets.model';
+import { Result } from 'src/app/models/result.model';
 
 @Component({
   selector: 'app-planets-list',
@@ -11,16 +12,29 @@ import { Planets } from 'src/app/models/planets.model';
 export class PlanetsListComponent implements OnInit {
   planets: Planets;
   pageSize=10;
+  pageIndex: number;
   constructor(private planetsService: PlanetsService) { }
 
   ngOnInit(): void {
-    // init request
+
     this.getPlanets();
+    this.getPageIndex();
+
+    // after previous page button click send again data
+    if(this.planets == undefined) {
+      this.planetsService.sendListofPlanets();
+      this.planetsService.sendPageIndex();
+    }
+
   }
   getPlanets() {
     this.planetsService.getListOfPlanets().subscribe((planets: Planets)=> {
-      console.log(planets);
       this.planets = planets;
+    });
+  }
+  getPageIndex() {
+    this.planetsService.getPageIndex().subscribe((index:number) => {
+      this.pageIndex = index;
     });
   }
 
@@ -28,11 +42,16 @@ export class PlanetsListComponent implements OnInit {
     console.log(event);
     if(event.pageIndex > event.previousPageIndex) {
       // request next page
-      this.planetsService.changePage(this.planets.next);
+      this.planetsService.changePage(this.planets.next, event.pageIndex);
     } else {
       // request previous page
-      this.planetsService.changePage(this.planets.previous);
+      this.planetsService.changePage(this.planets.previous, event.pageIndex);
+
     }
+  }
+
+  selectPlanet(planet: Result) {
+    this.planetsService.selectedPlanet = planet;
   }
 
 }

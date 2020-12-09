@@ -1,12 +1,13 @@
 <div class="container" *ngIf="planets">
   <div class="row">
     <div class="col-8 mx-auto" *ngFor="let planet of planets.results; let i=index">
-      <a [routerLink]="['/planet', i+1]">{{planet.name}}</a>
+      <a [routerLink]="['/planet', i+1]" (click)="selectPlanet(planet)">{{planet.name}}</a>
     </div>
   </div>
   <div class="row">
     <mat-paginator
     [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
     [length]="planets.count"
     (page)="onPageChange($event)">
 
