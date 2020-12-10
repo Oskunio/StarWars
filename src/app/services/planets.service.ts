@@ -87,8 +87,10 @@ export class PlanetsService {
 
   // get residents and films details
   getPlanetDetails() {
+    // clear tabs
     this.selectedPlanetResidents = [];
     this.selectedPlanetFilms = [];
+    // if residents tab is not empty
     if(this.selectedPlanet.residents) {
       for (let resident of this.selectedPlanet.residents) {
         this.webService.makeGetRequest(resident).subscribe((res: Resident) => {
@@ -97,6 +99,7 @@ export class PlanetsService {
         });
       }
     }
+    // if films tab is not empty
     if(this.selectedPlanet.films)
     {
       for (let film of this.selectedPlanet.films) {
