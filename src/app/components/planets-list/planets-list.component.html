@@ -1,16 +1,39 @@
-<div class="container" *ngIf="planets">
-  <div class="row">
-    <div class="col-8 mx-auto" *ngFor="let planet of planets.results; let i=index">
-      <a [routerLink]="['/planet', i+1]" (click)="selectPlanet(planet)">{{planet.name}}</a>
-    </div>
-  </div>
-  <div class="row">
-    <mat-paginator
-    [pageSize]="pageSize"
-    [pageIndex]="pageIndex"
-    [length]="planets.count"
-    (page)="onPageChange($event)">
+<div class="container" *ngIf="planets" style="margin-top: 30px;">
 
-    </mat-paginator>
+  <div class="row">
+    <div class="col-8 mx-auto planet-cover" *ngFor="let planet of planets.results; let i=index">
+
+      <div class="row justify-content-center name">
+        <a [routerLink]="['/planet', i+1]" (click)="selectPlanet(planet)">{{planet.name}}</a>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          diameter: {{planet.diameter}}
+        </div>
+        <div class="col">
+          climate: {{planet.climate}}
+        </div>
+        <div class="col">
+          tarrain: {{planet.terrain}}
+        </div>
+        <div class="col">
+          population: {{planet.population}}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="planets.count"
+        (page)="onPageChange($event)">
+
+      </mat-paginator>
+    </div>
+
   </div>
 </div>

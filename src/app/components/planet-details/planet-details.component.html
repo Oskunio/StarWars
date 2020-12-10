@@ -1,14 +1,18 @@
-<p>planet-details works!</p>
-<div *ngIf="planet">
-  {{planet.name}}
+<div class="container">
+  <div class="col">
+    <div *ngIf="planet">
+      {{planet.name}}
+    </div>
+    Residents:
+    <div *ngFor="let resident of residents">
+      {{resident.name}}
+    </div>
+    <br>
+    Films:
+    <div *ngFor="let film of films">
+      {{film.title}}
+    </div>
+  </div>
 </div>
-Residents:
-<div *ngFor="let resident of residents">
-  {{resident.name}}
-</div>
-<br>
-Films:
-<div *ngFor="let film of films">
-  {{film.title}}
-</div>
+
 
