@@ -43,6 +43,7 @@ export class PlanetsService {
   getListOfPlanets() {
     return this.planetsSub.asObservable();
   }
+
   sendListofPlanets() {
     this.planetsSub.next(this.planets);
   }
@@ -68,14 +69,14 @@ export class PlanetsService {
     return this.selectedPlanetSub.asObservable();
   }
 
-  sendSelectedPlanet() {
-    this.selectedPlanetSub.next(this.selectedPlanet);
-  }
   getResidents() {
     return this.selectedPlanetResidentsSub.asObservable();
   }
   getFilms() {
     return this.selectedPlanetFilmsSub.asObservable();
+  }
+  sendSelectedPlanet() {
+    this.selectedPlanetSub.next(this.selectedPlanet);
   }
   sendResidents() {
     this.selectedPlanetResidentsSub.next(this.selectedPlanetResidents);
@@ -88,19 +89,24 @@ export class PlanetsService {
   getPlanetDetails() {
     this.selectedPlanetResidents = [];
     this.selectedPlanetFilms = [];
-    for (let resident of this.selectedPlanet.residents) {
-      this.webService.makeGetRequest(resident).subscribe((res: Resident) => {
-        this.selectedPlanetResidents.push(res);
-        this.sendResidents();
-      });
+    if(this.selectedPlanet.residents) {
+      for (let resident of this.selectedPlanet.residents) {
+        this.webService.makeGetRequest(resident).subscribe((res: Resident) => {
+          this.selectedPlanetResidents.push(res);
+          this.sendResidents();
+        });
+      }
+    }
+    if(this.selectedPlanet.films)
+    {
+      for (let film of this.selectedPlanet.films) {
+        this.webService.makeGetRequest(film).subscribe((res: Film) => {
+         this.selectedPlanetFilms.push(res);
+         this.sendFilms();
+        });
+      }
     }
 
-    for (let film of this.selectedPlanet.films) {
-      this.webService.makeGetRequest(film).subscribe((res: Film) => {
-       this.selectedPlanetFilms.push(res);
-       this.sendFilms();
-      });
-    }
 
   }
 }

@@ -1,18 +1,73 @@
-<div class="container">
-  <div class="col">
-    <div *ngIf="planet">
-      {{planet.name}}
-    </div>
-    Residents:
-    <div *ngFor="let resident of residents">
-      {{resident.name}}
-    </div>
-    <br>
-    Films:
-    <div *ngFor="let film of films">
-      {{film.title}}
-    </div>
+<div class="container" *ngIf="planet">
+  <div class="row name justify-content-center">
+
+    {{planet.name}}
+
   </div>
+
+
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div class="row planet-info-cover">
+        <div class="col-12" style="margin-bottom: 5px; font-size: 18px;">
+          Planet details:
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          diameter: {{planet.diameter}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          rotation period: {{planet.rotation_period}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          orbital period: {{planet.orbital_period}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          climate: {{planet.climate}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          gravity: {{planet.gravity}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          surface water; {{planet.surface_water}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          tarrain: {{planet.terrain}}
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 planet-info">
+          population: {{planet.population}}
+        </div>
+      </div>
+    </div>
+    <div class="col-10 col-md-5 mx-auto planet-info-cover">
+      <div style="margin-bottom: 5px; font-size: 18px;">
+        Planet residents:
+      </div>
+      <div  *ngFor="let resident of residents;let lastItem = last;">
+        {{resident.name}}
+        <hr *ngIf="!lastItem" class="solid">
+      </div>
+    </div>
+    <div class="col-10 col-md-5 mx-auto planet-info-cover">
+      <div style="margin-bottom: 5px; font-size: 18px;">
+        List of movies:
+      </div>
+      <div  *ngFor="let film of films;let lastItem = last;">
+        {{film.title}}
+        <hr *ngIf="!lastItem" class="solid">
+      </div>
+    </div>
+    <!--
+    <ng-container *ngIf="residents">
+      <div class="col-6" *ngFor="let resident of residents">
+        {{resident.name}}
+      </div>
+    </ng-container>
+    <ng-container *ngIf="films">
+      <div class="col-6" *ngFor="let film of films">
+        {{film.title}}
+      </div>
+    </ng-container>
+    -->
+  </div>
+
 </div>
-
-

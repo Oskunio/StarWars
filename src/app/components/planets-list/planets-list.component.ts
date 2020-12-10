@@ -32,6 +32,7 @@ export class PlanetsListComponent implements OnInit {
       this.planets = planets;
     });
   }
+
   getPageIndex() {
     this.planetsService.getPageIndex().subscribe((index:number) => {
       this.pageIndex = index;

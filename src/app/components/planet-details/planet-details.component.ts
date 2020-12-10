@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Result } from 'src/app/models/result.model';
 import { Film } from 'src/app/models/film.model';
 import { Resident } from 'src/app/models/resident.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-planet-details',
@@ -15,18 +16,22 @@ export class PlanetDetailsComponent implements OnInit {
   planet: Result;
   films: Film[];
   residents: Resident[];
-  constructor(private planetsService: PlanetsService) { }
+  constructor(private planetsService: PlanetsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.planetsService.getPlanetDetails();
-    this.getPlanet();
-    this.getFilms();
-    this.getResidents();
+
+      this.planetsService.getPlanetDetails();
+      this.getPlanet();
+      this.getFilms();
+      this.getResidents();
+      this.planetsService.sendSelectedPlanet();
+
   }
 
   getPlanet(){
     this.planetsService.getSelectedPlanet().subscribe((planet: Result) => {
       this.planet = planet;
+
     });
   }
   getResidents() {
@@ -39,7 +44,6 @@ export class PlanetDetailsComponent implements OnInit {
       this.films = films;
     });
   }
-
 
 
 }
