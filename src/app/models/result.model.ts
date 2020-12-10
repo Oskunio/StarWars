@@ -1,3 +1,5 @@
+import { Resident } from './resident.model';
+import { Film } from './film.model';
 export class Result {
   name: string;
   rotation_period: string;
@@ -8,8 +10,8 @@ export class Result {
   terrain: string;
   surface_water: string;
   population: string;
-  residents: string[];
-  films: string[];
+  residents: string[] | Resident[];
+  films: string[] | Film[];
   created: string;
   edited: string;
   url: string;

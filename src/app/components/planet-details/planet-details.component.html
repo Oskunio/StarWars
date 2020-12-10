@@ -2,4 +2,13 @@
 <div *ngIf="planet">
   {{planet.name}}
 </div>
+Residents:
+<div *ngFor="let resident of residents">
+  {{resident.name}}
+</div>
+<br>
+Films:
+<div *ngFor="let film of films">
+  {{film.title}}
+</div>
 
