@@ -11,7 +11,7 @@ import { Result } from 'src/app/models/result.model';
 })
 export class PlanetsListComponent implements OnInit {
   planets: Planets;
-  pageSize=10;
+  pageSize = 10;
   pageIndex: number;
   constructor(private planetsService: PlanetsService) { }
 

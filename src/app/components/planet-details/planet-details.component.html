@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="col-10 col-md-5 mx-auto planet-info-cover">
+    <div *ngIf="residents" class="col-10 col-md-5 mx-auto planet-info-cover">
       <div style="margin-bottom: 5px; font-size: 18px;">
         Planet residents:
       </div>
@@ -56,18 +56,6 @@
         <hr *ngIf="!lastItem" class="solid">
       </div>
     </div>
-    <!--
-    <ng-container *ngIf="residents">
-      <div class="col-6" *ngFor="let resident of residents">
-        {{resident.name}}
-      </div>
-    </ng-container>
-    <ng-container *ngIf="films">
-      <div class="col-6" *ngFor="let film of films">
-        {{film.title}}
-      </div>
-    </ng-container>
-    -->
   </div>
 
 </div>
