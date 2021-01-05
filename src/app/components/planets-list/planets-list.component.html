@@ -1,7 +1,7 @@
 <div class="container" *ngIf="planets" style="margin-top: 30px;">
 
   <div class="row">
-    <div class="col-11 col-md-8 mx-auto planet-cover" *ngFor="let planet of planets.results; let i=index">
+    <div @fade class="col-11 col-md-8 mx-auto planet-cover" *ngFor="let planet of planets.results; let i=index">
 
       <div class="row justify-content-center name">
         <a [routerLink]="['/planet', i+1]" (click)="selectPlanet(planet)">{{planet.name}}</a>

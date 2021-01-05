@@ -5,11 +5,15 @@ import { Result } from 'src/app/models/result.model';
 import { Film } from 'src/app/models/film.model';
 import { Resident } from 'src/app/models/resident.model';
 import { ActivatedRoute } from '@angular/router';
+import {fade} from '../../animations/fade';
 
 @Component({
   selector: 'app-planet-details',
   templateUrl: './planet-details.component.html',
-  styleUrls: ['./planet-details.component.scss']
+  styleUrls: ['./planet-details.component.scss'],
+  animations: [
+    fade
+  ]
 })
 export class PlanetDetailsComponent implements OnInit {
 

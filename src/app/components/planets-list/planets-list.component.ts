@@ -3,11 +3,15 @@ import { PageEvent } from '@angular/material/paginator';
 import { Component, OnInit } from '@angular/core';
 import { Planets } from 'src/app/models/planets.model';
 import { Result } from 'src/app/models/result.model';
+import { fade } from '../../animations/fade';
 
 @Component({
   selector: 'app-planets-list',
   templateUrl: './planets-list.component.html',
-  styleUrls: ['./planets-list.component.scss']
+  styleUrls: ['./planets-list.component.scss'],
+  animations: [
+    fade
+  ]
 })
 export class PlanetsListComponent implements OnInit {
   planets: Planets;
